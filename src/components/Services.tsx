@@ -1,5 +1,5 @@
 
-import { Server, Code, Brain, Circuit, Database, Shield } from 'lucide-react';
+import { Server, Code, Brain, CircuitBoard, Database, Shield } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 
@@ -18,7 +18,7 @@ const Services = () => {
       tags: ["TensorFlow", "PyTorch", "NLP", "Computer Vision"]
     },
     {
-      icon: <Circuit className="h-10 w-10 text-primary" />,
+      icon: <CircuitBoard className="h-10 w-10 text-primary" />,
       title: "Silicon Engineering",
       description: "Hardware design and optimization for specialized computing needs and IoT solutions.",
       tags: ["FPGA", "ASIC", "Verilog", "Embedded Systems"]
