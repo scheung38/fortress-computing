@@ -156,8 +156,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-fortress-light mb-1">Email Us</h4>
-                  <a href="mailto:contact@fortresscomputing.com" className="text-primary hover:underline">
-                    contact@fortresscomputing.com
+                  <a href="mailto:sebastian@fortresscomputing.org" className="text-primary hover:underline">
+                    sebastian@fortresscomputing.org
                   </a>
                 </div>
               </div>
@@ -168,8 +168,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-fortress-light mb-1">Call Us</h4>
-                  <a href="tel:+18005551234" className="text-primary hover:underline">
-                    +1 (800) 555-1234
+                  <a href="tel:+447307684548" className="text-primary hover:underline">
+                    +44 7307 684 548
                   </a>
                 </div>
               </div>
@@ -181,8 +181,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-fortress-light mb-1">Visit Us</h4>
                   <address className="text-fortress-light/70 not-italic">
-                    101 Tech Plaza, Suite 500<br />
-                    San Francisco, CA 94105
+                    Tilson Close<br />
+                    London, SE5 7TZ<br />
+                    United Kingdom
                   </address>
                 </div>
               </div>
