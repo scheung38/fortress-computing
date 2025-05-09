@@ -87,128 +87,128 @@ const Auth = () => {
         
         <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
           <CardHeader>
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="login">Sign In</TabsTrigger>
                 <TabsTrigger value="register">Register</TabsTrigger>
               </TabsList>
+            
+              <CardContent className="mt-4">
+                {error && (
+                  <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-2 rounded-md mb-4">
+                    {error}
+                  </div>
+                )}
+                
+                <TabsContent value="login">
+                  <form onSubmit={handleLogin} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        value={loginEmail} 
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                        required
+                        placeholder="you@example.com"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="password">Password</Label>
+                      </div>
+                      <Input 
+                        id="password" 
+                        type="password" 
+                        value={loginPassword} 
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        required
+                        placeholder="••••••••"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full fortress-button" 
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Signing in...
+                        </>
+                      ) : "Sign In"}
+                    </Button>
+                  </form>
+                </TabsContent>
+                
+                <TabsContent value="register">
+                  <form onSubmit={handleRegister} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="fullName">Full Name</Label>
+                      <Input 
+                        id="fullName" 
+                        value={registerFullName} 
+                        onChange={(e) => setRegisterFullName(e.target.value)}
+                        required
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="registerEmail">Email</Label>
+                      <Input 
+                        id="registerEmail" 
+                        type="email" 
+                        value={registerEmail} 
+                        onChange={(e) => setRegisterEmail(e.target.value)}
+                        required
+                        placeholder="you@example.com"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="registerPassword">Password</Label>
+                      <Input 
+                        id="registerPassword" 
+                        type="password" 
+                        value={registerPassword} 
+                        onChange={(e) => setRegisterPassword(e.target.value)}
+                        required
+                        placeholder="••••••••"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="confirmPassword">Confirm Password</Label>
+                      <Input 
+                        id="confirmPassword" 
+                        type="password" 
+                        value={registerConfirmPassword} 
+                        onChange={(e) => setRegisterConfirmPassword(e.target.value)}
+                        required
+                        placeholder="••••••••"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full fortress-button" 
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Creating Account...
+                        </>
+                      ) : "Create Account"}
+                    </Button>
+                  </form>
+                </TabsContent>
+              </CardContent>
             </Tabs>
           </CardHeader>
-          
-          <CardContent>
-            {error && (
-              <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-2 rounded-md mb-4">
-                {error}
-              </div>
-            )}
-            
-            <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    value={loginEmail} 
-                    onChange={(e) => setLoginEmail(e.target.value)}
-                    required
-                    placeholder="you@example.com"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
-                  </div>
-                  <Input 
-                    id="password" 
-                    type="password" 
-                    value={loginPassword} 
-                    onChange={(e) => setLoginPassword(e.target.value)}
-                    required
-                    placeholder="••••••••"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full fortress-button" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Signing in...
-                    </>
-                  ) : "Sign In"}
-                </Button>
-              </form>
-            </TabsContent>
-            
-            <TabsContent value="register">
-              <form onSubmit={handleRegister} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">Full Name</Label>
-                  <Input 
-                    id="fullName" 
-                    value={registerFullName} 
-                    onChange={(e) => setRegisterFullName(e.target.value)}
-                    required
-                    placeholder="John Doe"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="registerEmail">Email</Label>
-                  <Input 
-                    id="registerEmail" 
-                    type="email" 
-                    value={registerEmail} 
-                    onChange={(e) => setRegisterEmail(e.target.value)}
-                    required
-                    placeholder="you@example.com"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="registerPassword">Password</Label>
-                  <Input 
-                    id="registerPassword" 
-                    type="password" 
-                    value={registerPassword} 
-                    onChange={(e) => setRegisterPassword(e.target.value)}
-                    required
-                    placeholder="••••••••"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <Input 
-                    id="confirmPassword" 
-                    type="password" 
-                    value={registerConfirmPassword} 
-                    onChange={(e) => setRegisterConfirmPassword(e.target.value)}
-                    required
-                    placeholder="••••••••"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full fortress-button" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Creating Account...
-                    </>
-                  ) : "Create Account"}
-                </Button>
-              </form>
-            </TabsContent>
-          </CardContent>
           
           <CardFooter className="flex justify-center">
             <p className="text-sm text-fortress-light/50">
