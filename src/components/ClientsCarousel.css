@@ -1,0 +1,33 @@
+.carousel-outer {
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    padding: 2rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.carousel-logo {
+    height: 48px;
+    margin: 0 2.5rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.carousel-logo:hover {
+    opacity: 1;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
