@@ -1,0 +1,234 @@
+
+import React, { useState } from 'react';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { ArrowLeft, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Auth = () => {
+  const { user, signIn, signUp, loading } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState<string>("login");
+  
+  // Login form state
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  
+  // Register form state
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState('');
+  const [registerFullName, setRegisterFullName] = useState('');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // If user is already logged in, redirect to home or the page they were trying to access
+  if (user) {
+    const redirectTo = location.state?.from?.pathname || "/";
+    return <Navigate to={redirectTo} replace />;
+  }
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      await signIn(loginEmail, loginPassword);
+      // Navigation will happen automatically due to the redirect in useEffect
+    } catch (error) {
+      setError('Failed to sign in. Please check your credentials.');
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    
+    if (registerPassword !== registerConfirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await signUp(registerEmail, registerPassword, registerFullName);
+      setActiveTab('login');
+    } catch (error) {
+      console.error('Registration error:', error);
+      setError('Failed to create account. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-fortress-navy py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <Link to="/" className="flex items-center justify-center mb-6 text-primary hover:text-primary/80 transition-colors">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            <span>Back to Home</span>
+          </Link>
+          
+          <h2 className="text-3xl font-bold text-fortress-light mb-2">
+            <span className="gradient-text">Fortress</span> Computing
+          </h2>
+          <p className="text-fortress-light/70">Sign in to access your account</p>
+        </div>
+        
+        <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+          <CardHeader>
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="login">Sign In</TabsTrigger>
+                <TabsTrigger value="register">Register</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </CardHeader>
+          
+          <CardContent>
+            {error && (
+              <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-2 rounded-md mb-4">
+                {error}
+              </div>
+            )}
+            
+            <TabsContent value="login">
+              <form onSubmit={handleLogin} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    value={loginEmail} 
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    required
+                    placeholder="you@example.com"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="password">Password</Label>
+                  </div>
+                  <Input 
+                    id="password" 
+                    type="password" 
+                    value={loginPassword} 
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full fortress-button" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Signing in...
+                    </>
+                  ) : "Sign In"}
+                </Button>
+              </form>
+            </TabsContent>
+            
+            <TabsContent value="register">
+              <form onSubmit={handleRegister} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="fullName">Full Name</Label>
+                  <Input 
+                    id="fullName" 
+                    value={registerFullName} 
+                    onChange={(e) => setRegisterFullName(e.target.value)}
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="registerEmail">Email</Label>
+                  <Input 
+                    id="registerEmail" 
+                    type="email" 
+                    value={registerEmail} 
+                    onChange={(e) => setRegisterEmail(e.target.value)}
+                    required
+                    placeholder="you@example.com"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="registerPassword">Password</Label>
+                  <Input 
+                    id="registerPassword" 
+                    type="password" 
+                    value={registerPassword} 
+                    onChange={(e) => setRegisterPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password" 
+                    value={registerConfirmPassword} 
+                    onChange={(e) => setRegisterConfirmPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full fortress-button" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating Account...
+                    </>
+                  ) : "Create Account"}
+                </Button>
+              </form>
+            </TabsContent>
+          </CardContent>
+          
+          <CardFooter className="flex justify-center">
+            <p className="text-sm text-fortress-light/50">
+              {activeTab === 'login' 
+                ? "Don't have an account? " 
+                : "Already have an account? "
+              }
+              <button 
+                type="button"
+                className="text-primary hover:underline"
+                onClick={() => setActiveTab(activeTab === 'login' ? 'register' : 'login')}
+              >
+                {activeTab === 'login' ? 'Register' : 'Sign in'}
+              </button>
+            </p>
+          </CardFooter>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default Auth;
