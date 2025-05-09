@@ -3,6 +3,8 @@ import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import { getYearsInBusiness } from "../common_functions";
+
 const About = () => {
   const strengths = [
     "Specialized expertise across multiple domains",
@@ -26,7 +28,7 @@ const About = () => {
             </h2>
             
             <p className="text-fortress-light/80 mb-8">
-              Founded in 2010, Fortress Computing brings together elite engineers, data scientists, and technologists with deep experience across industries. We specialize in solving complex technical challenges that others consider impossible.
+              Founded in 2019, Fortress Computing brings together elite engineers, data scientists, and technologists with deep experience across industries. We specialize in solving complex technical challenges that others consider impossible.
             </p>
             
             <p className="text-fortress-light/80 mb-8">
@@ -54,19 +56,19 @@ const About = () => {
               <div className="bg-card rounded-lg p-6 md:p-8">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="fortress-card backdrop-blur-sm bg-secondary/50">
-                    <h4 className="text-xl font-bold mb-1">10+</h4>
+                    <h4 className="text-xl font-bold mb-1">{getYearsInBusiness()}+</h4>
                     <p className="text-sm text-fortress-light/70">Years in Business</p>
                   </div>
                   <div className="fortress-card backdrop-blur-sm bg-secondary/50">
-                    <h4 className="text-xl font-bold mb-1">37+</h4>
+                    <h4 className="text-xl font-bold mb-1">10+</h4>
                     <p className="text-sm text-fortress-light/70">Team Members</p>
                   </div>
                   <div className="fortress-card backdrop-blur-sm bg-secondary/50">
-                    <h4 className="text-xl font-bold mb-1">5</h4>
+                    <h4 className="text-xl font-bold mb-1">1</h4>
                     <p className="text-sm text-fortress-light/70">Global Offices</p>
                   </div>
                   <div className="fortress-card backdrop-blur-sm bg-secondary/50">
-                    <h4 className="text-xl font-bold mb-1">98%</h4>
+                    <h4 className="text-xl font-bold mb-1">92%</h4>
                     <p className="text-sm text-fortress-light/70">Client Retention</p>
                   </div>
                 </div>

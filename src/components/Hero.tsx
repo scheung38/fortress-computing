@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { getYearsInBusiness } from "../common_functions";
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-fortress-blue pt-16">
@@ -43,7 +45,7 @@ const Hero = () => {
                 <p className="text-sm text-fortress-light/70">Client Satisfaction</p>
               </div>
               <div>
-                <p className="text-4xl font-bold text-primary">15+</p>
+                <p className="text-4xl font-bold text-primary">{getYearsInBusiness()}+</p>
                 <p className="text-sm text-fortress-light/70">Years Experience</p>
               </div>
             </div>
