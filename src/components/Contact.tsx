@@ -227,7 +227,7 @@ const Contact = () => {
                     Visit Us
                   </h4>
                   <address className="text-fortress-light/70 not-italic">
-                    13 Tilson Close
+                    Tilson Close
                     <br />
                     Camberwell, London SE5 7TZ
                   </address>
