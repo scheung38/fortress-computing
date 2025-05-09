@@ -15,6 +15,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+function smoothScrollTo(targetY: number, duration: number = 400) {
+  const startY = window.scrollY;
+  const changeY = targetY - startY;
+  const startTime = performance.now();
+  function easeInOutQuad(t: number) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+  function animateScroll(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = easeInOutQuad(progress);
+    window.scrollTo(0, startY + changeY * ease);
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  }
+  requestAnimationFrame(animateScroll);
+}
+
 const Navbar = () => {
   const { pathname } = useLocation();
   const { user, isAdmin, signOut } = useAuth();
@@ -36,10 +55,10 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Services", href: "/#services" },
-    { name: "About", href: "/#about" },
-    { name: "Team", href: "/#team" },
-    { name: "Contact", href: "/#contact" }
+    { name: "Services", href: "#services" },
+    { name: "About", href: "#about" },
+    { name: "Team", href: "#team" },
+    { name: "Contact", href: "#contact" }
   ];
 
   return (
@@ -48,20 +67,34 @@ const Navbar = () => {
       isScrolled ? "bg-fortress-blue/90 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-6"
     )}>
       <div className="container mx-auto flex justify-between items-center px-4">
-        <Link to="/" className="text-2xl font-bold text-fortress-light">
+        <a
+          href="#top"
+          className="text-2xl font-bold text-fortress-light"
+          onClick={e => {
+            e.preventDefault();
+            smoothScrollTo(0, 400);
+          }}
+        >
           <span className="text-primary">Fortress</span> Computing
-        </Link>
+        </a>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-4">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.name}
-              to={item.href}
+              href={item.href}
               className="text-fortress-light hover:text-primary transition-colors"
+              onClick={e => {
+                e.preventDefault();
+                const el = document.getElementById(item.href.substring(1));
+                if (el) {
+                  smoothScrollTo(el.offsetTop, 400);
+                }
+              }}
             >
               {item.name}
-            </Link>
+            </a>
           ))}
           
           {/* User menu or Auth buttons */}
@@ -124,14 +157,21 @@ const Navbar = () => {
         <div className="md:hidden bg-fortress-navy/95 backdrop-blur-md">
           <div className="container mx-auto py-4 px-4 flex flex-col space-y-4">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
-                to={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                href={item.href}
+                onClick={e => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  const el = document.getElementById(item.href.substring(1));
+                  if (el) {
+                    smoothScrollTo(el.offsetTop, 400);
+                  }
+                }}
                 className="text-fortress-light hover:text-primary py-2 transition-colors"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
             
             {user ? (

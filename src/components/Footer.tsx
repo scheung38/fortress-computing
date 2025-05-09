@@ -2,6 +2,36 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+function smoothScrollTo(targetY: number, duration: number = 400) {
+  const startY = window.scrollY;
+  const changeY = targetY - startY;
+  const startTime = performance.now();
+  function easeInOutQuad(t: number) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+  function animateScroll(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = easeInOutQuad(progress);
+    window.scrollTo(0, startY + changeY * ease);
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  }
+  requestAnimationFrame(animateScroll);
+}
+
+function handleSmoothScroll(e: React.MouseEvent<HTMLAnchorElement>) {
+  const href = e.currentTarget.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    e.preventDefault();
+    const el = document.getElementById(href.substring(1));
+    if (el) {
+      smoothScrollTo(el.offsetTop, 400);
+    }
+  }
+}
+
 const Footer = () => {
   return (
     <footer className="bg-fortress-blue py-12 relative overflow-hidden">
@@ -57,22 +87,22 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-fortress-light">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Services
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#about" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#team" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#team" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Our Team
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#contact" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Contact
                 </a>
               </li>

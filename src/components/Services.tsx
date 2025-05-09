@@ -9,7 +9,7 @@ const Services = () => {
       icon: <Code className="h-10 w-10 text-primary" />,
       title: "Fullstack Development",
       description: "End-to-end web and mobile solutions built with modern frameworks and best practices.",
-      tags: ["React", "Node.js", "TypeScript", "PostgreSQL"]
+      tags: ["React", "Python", "Node.js", "TypeScript", "Supabase", "GraphQL"]
     },
     {
       icon: <Brain className="h-10 w-10 text-primary" />,

@@ -7,7 +7,7 @@ const Team = () => {
     {
       name: "Sebastian Cheung",
       role: "Founder & Lead Architect",
-      image: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='288' height='288' viewBox='0 0 288 288'%3E%3Crect width='288' height='288' fill='%230F172A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='128px' fill='%2306B6D4'%3ESC%3C/text%3E%3C/svg%3E",
+      image: "/Sebastian.png",
       bio: "Former Silicon Valley tech with 20+ years experience in software architecture and deeptech silicon engineering.",
       links: [
         { icon: <Linkedin size={16} />, url: "#" },
@@ -18,7 +18,7 @@ const Team = () => {
     {
       name: "Zahara Miriam",
       role: "Founder & AI Specialist",
-      image: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='288' height='288' viewBox='0 0 288 288'%3E%3Crect width='288' height='288' fill='%230F172A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='128px' fill='%2306B6D4'%3EZM%3C/text%3E%3C/svg%3E",
+      image: "/Zahara.png",
       bio: "Experienced entrepreneur with over 10+ years of Fullstack Engineering.",
       links: [
         { icon: <Linkedin size={16} />, url: "#" },
