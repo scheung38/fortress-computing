@@ -60,32 +60,40 @@ const Services = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <Card key={index} className={cn(
-              "fortress-card group hover:translate-y-[-5px] transition-all duration-300",
-              "bg-card/50 backdrop-blur-sm border-fortress-light/5"
-            )}>
-              <CardHeader className="pb-4">
-                <div className="mb-4">{service.icon}</div>
-                <CardTitle className="text-2xl">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-fortress-light/70 mb-6 text-base">
-                  {service.description}
-                </CardDescription>
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.map((tag, idx) => (
-                    <span 
-                      key={idx} 
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {services.map((service, index) => {
+            // Map index to section id
+            const ids = ["fullstack", "aiml", "silicon", "fintech", "cloud", "security"];
+            const sectionId = ids[index];
+            return (
+              <div key={index}>
+                <span id={sectionId} className="sr-only" aria-hidden="true"></span>
+                <Card className={cn(
+                  "fortress-card group hover:translate-y-[-5px] transition-all duration-300",
+                  "bg-card/50 backdrop-blur-sm border-fortress-light/5"
+                )}>
+                <CardHeader className="pb-4">
+                  <div className="mb-4">{service.icon}</div>
+                  <CardTitle className="text-2xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-fortress-light/70 mb-6 text-base">
+                    {service.description}
+                  </CardDescription>
+                  <div className="flex flex-wrap gap-2">
+                    {service.tags.map((tag, idx) => (
+                      <span 
+                        key={idx} 
+                        className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

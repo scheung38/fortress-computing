@@ -27,7 +27,10 @@ function handleSmoothScroll(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     const el = document.getElementById(href.substring(1));
     if (el) {
-      smoothScrollTo(el.offsetTop, 400);
+      // Offset for sticky header (e.g., 70px)
+      const offset = 70;
+      // Use same offset as Navbar (70px)
+      smoothScrollTo(el.offsetTop - offset, 400);
     }
   }
 }
@@ -118,27 +121,27 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-fortress-light">Services</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Fullstack Development
                 </a>
               </li>
               <li>
-                <a href="#" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   AI/ML Solutions
                 </a>
               </li>
               <li>
-                <a href="#" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Silicon Engineering
                 </a>
               </li>
               <li>
-                <a href="#" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   FinTech Consulting
                 </a>
               </li>
               <li>
-                <a href="#" className="text-fortress-light/70 hover:text-primary transition-colors">
+                <a href="#services" className="text-fortress-light/70 hover:text-primary transition-colors" onClick={handleSmoothScroll}>
                   Cloud Architecture
                 </a>
               </li>
@@ -178,6 +181,9 @@ const Footer = () => {
               <a href="#" className="text-fortress-light/50 hover:text-primary transition-colors">Terms of Service</a>
               <a href="#" className="text-fortress-light/50 hover:text-primary transition-colors">Cookie Policy</a>
             </div>
+          </div>
+          <div className="mt-4 text-center text-xs text-fortress-light/40">
+            Company Registration Number: 12345678
           </div>
         </div>
       </div>

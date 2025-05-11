@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const Team = () => {
   const team = [
     {
-      name: "Sebastian Cheung",
+      name: "Sebastian Cheung, MSc, CQF",
       role: "Founder & Lead Architect",
       image: "/Sebastian.png",
       bio: "Former Silicon Valley tech with 20+ years experience in software architecture and deeptech silicon engineering.",
