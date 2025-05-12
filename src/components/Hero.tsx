@@ -72,15 +72,15 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-fortress-navy via-fortress-blue to-fortress-teal opacity-80"></div>
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0icmdiYSgxMiwgNzQsIDExMCwgMC4yKSIvPjwvc3ZnPg==')] opacity-10"></div>
               <div className="relative z-10 p-8 text-center">
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-1">
                   <img
                     // src="/public/ChatGPT_castle_blue_theme_latest.png"
                     src="/public/animated_chip.svg"
                     alt="ChatGPT Logo"
                     style={{
-                      width: "800px",
-                      height: "800px",
-                      marginTop: "18px",
+                      width: "600px",
+                      height: "600px",
+                      marginBottom: "-68px", // for example
                     }}
                     className="object-contain"
                   />

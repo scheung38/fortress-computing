@@ -1,0 +1,273 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Chip glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- PCB pattern -->
+    <pattern id="pcbPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="2" fill="#1a87a9" opacity="0.5" />
+      <circle cx="190" cy="10" r="2" fill="#1a87a9" opacity="0.5" />
+      <circle cx="10" cy="190" r="2" fill="#1a87a9" opacity="0.5" />
+      <circle cx="190" cy="190" r="2" fill="#1a87a9" opacity="0.5" />
+    </pattern>
+    
+    <!-- Radial gradient for the hover effect -->
+    <radialGradient id="hoverGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#40E0F0" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#40E0F0" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- PCB board base with semi-transparent fill -->
+  <rect x="150" y="150" width="500" height="300" fill="#0A1424" stroke="#193049" stroke-width="2" opacity="0.7" />
+  
+  <!-- PCB traces and routes -->
+  <g stroke="#4CC9F0" stroke-width="1.5" fill="none">
+    <!-- Horizontal PCB traces -->
+    <path d="M150,200 H650" opacity="0.8" />
+    <path d="M150,250 H300 Q310,250 310,260 V290 Q310,300 320,300 H650" opacity="0.8" />
+    <path d="M150,350 H280 Q290,350 290,340 V320 Q290,310 300,310 H650" opacity="0.8" />
+    <path d="M150,400 H650" opacity="0.8" />
+    
+    <!-- Left side vertical PCB traces -->
+    <path d="M200,150 V450" opacity="0.7" />
+    <path d="M250,150 V200 Q250,210 260,210 H280" opacity="0.7" />
+    <path d="M250,450 V400 Q250,390 260,390 H280" opacity="0.7" />
+    
+    <!-- Right side vertical PCB traces -->
+    <path d="M600,150 V450" opacity="0.7" />
+    <path d="M550,150 V210 Q550,220 540,220 H520" opacity="0.7" />
+    <path d="M550,450 V390 Q550,380 540,380 H520" opacity="0.7" />
+    
+    <!-- Corner routing traces -->
+    <path d="M200,200 Q190,200 190,210 V240 Q190,250 180,250 H150" opacity="0.6" />
+    <path d="M200,400 Q190,400 190,390 V360 Q190,350 180,350 H150" opacity="0.6" />
+    <path d="M600,200 Q610,200 610,210 V240 Q610,250 620,250 H650" opacity="0.6" />
+    <path d="M600,400 Q610,400 610,390 V360 Q610,350 620,350 H650" opacity="0.6" />
+  </g>
+  
+  <!-- PCB connection vias -->
+  <g fill="#4CC9F0">
+    <circle cx="200" cy="200" r="3" opacity="0.9" />
+    <circle cx="200" cy="250" r="3" opacity="0.9" />
+    <circle cx="200" cy="350" r="3" opacity="0.9" />
+    <circle cx="200" cy="400" r="3" opacity="0.9" />
+    
+    <circle cx="600" cy="200" r="3" opacity="0.9" />
+    <circle cx="600" cy="250" r="3" opacity="0.9" />
+    <circle cx="600" cy="350" r="3" opacity="0.9" />
+    <circle cx="600" cy="400" r="3" opacity="0.9" />
+    
+    <!-- Connection points to chip -->
+    <circle cx="310" cy="260" r="2" opacity="0.9" />
+    <circle cx="320" cy="300" r="2" opacity="0.9" />
+    <circle cx="290" cy="340" r="2" opacity="0.9" />
+    <circle cx="300" cy="310" r="2" opacity="0.9" />
+    
+    <circle cx="490" cy="260" r="2" opacity="0.9" />
+    <circle cx="480" cy="300" r="2" opacity="0.9" />
+    <circle cx="510" cy="340" r="2" opacity="0.9" />
+    <circle cx="500" cy="310" r="2" opacity="0.9" />
+  </g>
+  
+  <!-- PCB Components (small resistors, capacitors) -->
+  <g stroke="#1a87a9" stroke-width="1" fill="none">
+    <!-- Enhanced Realistic Resistors aligned to PCB traces -->
+    <!-- Horizontal resistor on top horizontal trace -->
+    <g>
+      <!-- Body -->
+      <rect x="320" y="195" width="24" height="10" fill="#bfa46d" stroke="#333" stroke-width="1"/>
+      <!-- Bands -->
+      <rect x="323" y="195" width="2" height="10" fill="#ff0000"/>
+      <rect x="328" y="195" width="2" height="10" fill="#00ff00"/>
+      <rect x="333" y="195" width="2" height="10" fill="#0000ff"/>
+      <!-- Leads -->
+      <line x1="320" y1="200" x2="310" y2="200" stroke="#ccc" stroke-width="2"/>
+      <line x1="344" y1="200" x2="354" y2="200" stroke="#ccc" stroke-width="2"/>
+      <!-- Label -->
+      <text x="332" y="190" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">R1</text>
+    </g>
+    <!-- Vertical resistor on left vertical trace -->
+    <g>
+      <g transform="rotate(90 195 300)">
+        <!-- Body -->
+        <rect x="195" y="290" width="24" height="10" fill="#bfa46d" stroke="#333" stroke-width="1"/>
+        <!-- Bands -->
+        <rect x="198" y="290" width="2" height="10" fill="#ff0000"/>
+        <rect x="203" y="290" width="2" height="10" fill="#00ff00"/>
+        <rect x="208" y="290" width="2" height="10" fill="#0000ff"/>
+        <!-- Leads -->
+        <line x1="195" y1="295" x2="185" y2="295" stroke="#ccc" stroke-width="2"/>
+        <line x1="219" y1="295" x2="229" y2="295" stroke="#ccc" stroke-width="2"/>
+        <!-- Label (rotated) -->
+        <text x="207" y="277" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle" transform="rotate(-90 207 277)">R2</text>
+      </g>
+    </g>
+    <!-- Horizontal resistor on bottom horizontal trace -->
+    <g>
+      <!-- Body -->
+      <rect x="505" y="375" width="24" height="10" fill="#bfa46d" stroke="#333" stroke-width="1"/>
+      <!-- Bands -->
+      <rect x="508" y="375" width="2" height="10" fill="#ff0000"/>
+      <rect x="513" y="375" width="2" height="10" fill="#00ff00"/>
+      <rect x="518" y="375" width="2" height="10" fill="#0000ff"/>
+      <!-- Leads -->
+      <line x1="505" y1="380" x2="495" y2="380" stroke="#ccc" stroke-width="2"/>
+      <line x1="529" y1="380" x2="539" y2="380" stroke="#ccc" stroke-width="2"/>
+      <!-- Label -->
+      <text x="517" y="370" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">R3</text>
+    </g>
+    <!-- Enhanced Realistic Capacitors (Ceramic) aligned to traces -->
+    <!-- Vertical capacitor on left vertical trace -->
+    <g>
+      <g transform="rotate(90 255 175)">
+        <!-- Plates -->
+        <rect x="255" y="170" width="3" height="14" fill="#1976d2"/>
+        <rect x="261" y="170" width="3" height="14" fill="#1976d2"/>
+        <!-- Leads -->
+        <line x1="256.5" y1="184" x2="256.5" y2="190" stroke="#ccc" stroke-width="2"/>
+        <line x1="262.5" y1="184" x2="262.5" y2="190" stroke="#ccc" stroke-width="2"/>
+      </g>
+      <!-- Label (upright, not rotated) -->
+      <text x="270" y="185" font-size="14" fill="#fff" font-family="Arial" text-anchor="start">C1</text>
+    </g>
+    <!-- Horizontal capacitor on top horizontal trace -->
+    <g>
+      <!-- Plates -->
+      <rect x="510" y="192" width="3" height="14" fill="#1976d2"/>
+      <rect x="516" y="192" width="3" height="14" fill="#1976d2"/>
+      <!-- Leads -->
+      <line x1="511.5" y1="206" x2="511.5" y2="212" stroke="#ccc" stroke-width="2"/>
+      <line x1="517.5" y1="206" x2="517.5" y2="212" stroke="#ccc" stroke-width="2"/>
+      <!-- Label -->
+      <text x="523" y="190" font-size="14" fill="#fff" font-family="Arial" text-anchor="start">C2</text>
+    </g>
+    <!-- Resistors -->
+    <rect x="230" y="220" width="20" height="10" fill="#193049" opacity="0.8" />
+    <rect x="550" y="220" width="20" height="10" fill="#193049" opacity="0.8" />
+    <rect x="230" y="370" width="20" height="10" fill="#193049" opacity="0.8" />
+    <rect x="550" y="370" width="20" height="10" fill="#193049" opacity="0.8" />
+    
+    <!-- Capacitors -->
+    <g>
+      <line x1="320" y1="240" x2="320" y2="250" stroke-width="4" />
+      <line x1="325" y1="240" x2="325" y2="250" stroke-width="4" />
+      <!-- Label C3 -->
+      <text x="272.5" y="231" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">C3</text>
+    </g>
+    <g>
+      <line x1="480" y1="220" x2="480" y2="230" stroke-width="4" />
+      <line x1="485" y1="220" x2="485" y2="230" stroke-width="4" />
+      <!-- Label C4 -->
+      <text x="587.5" y="232" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">C4</text>
+    </g>
+    <g>
+      <line x1="320" y1="370" x2="320" y2="380" stroke-width="4" />
+      <line x1="325" y1="370" x2="325" y2="380" stroke-width="4" />
+      <!-- Label C5 -->
+      <text x="272.5" y="380" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">C5</text>
+    </g>
+    <g>
+      <line x1="480" y1="370" x2="480" y2="380" stroke-width="4" />
+      <line x1="485" y1="370" x2="485" y2="380" stroke-width="4" />
+      <!-- Label C6 -->
+      <text x="587.5" y="380" font-size="14" fill="#fff" font-family="Arial" text-anchor="middle">C6</text>
+    </g>
+  </g>
+  
+  <!-- Data flow animations on the PCB traces -->
+  <g fill="#4CC9F0">
+    <circle cx="200" cy="250" r="1.5">
+      <animate attributeName="cx" values="200;320;200" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="600" cy="250" r="1.5">
+      <animate attributeName="cx" values="600;480;600" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="200" cy="350" r="1.5">
+      <animate attributeName="cx" values="200;320;200" dur="3.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="600" cy="350" r="1.5">
+      <animate attributeName="cx" values="600;480;600" dur="4.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Hover glow effect -->
+  <ellipse cx="400" cy="330" rx="180" ry="30" fill="url(#hoverGlow)" />
+  
+  <!-- The square AI chip -->
+  <g transform="translate(400, 300)" filter="url(#glow)">
+    <!-- Main chip body - square -->
+    <rect x="-75" y="-75" width="150" height="150" rx="5" fill="#193049" stroke="#4CC9F0" stroke-width="2" />
+    
+    <!-- Inner square with glowing center -->
+    <rect x="-50" y="-50" width="100" height="100" rx="3" fill="#0F2039" stroke="#4CC9F0" stroke-width="1" />
+    
+    <!-- Center glowing square -->
+    <rect x="-35" y="-35" width="70" height="70" rx="2" fill="#4CC9F0" opacity="0.6">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite" />
+    </rect>
+    
+    <!-- Chip pin connections -->
+    <g stroke="#4CC9F0" stroke-width="1.5">
+      <!-- Top pins -->
+      <line x1="-60" y1="-75" x2="-60" y2="-85" />
+      <line x1="-40" y1="-75" x2="-40" y2="-85" />
+      <line x1="-20" y1="-75" x2="-20" y2="-85" />
+      <line x1="0" y1="-75" x2="0" y2="-85" />
+      <line x1="20" y1="-75" x2="20" y2="-85" />
+      <line x1="40" y1="-75" x2="40" y2="-85" />
+      <line x1="60" y1="-75" x2="60" y2="-85" />
+      
+      <!-- Right pins -->
+      <line x1="75" y1="-60" x2="85" y2="-60" />
+      <line x1="75" y1="-40" x2="85" y2="-40" />
+      <line x1="75" y1="-20" x2="85" y2="-20" />
+      <line x1="75" y1="0" x2="85" y2="0" />
+      <line x1="75" y1="20" x2="85" y2="20" />
+      <line x1="75" y1="40" x2="85" y2="40" />
+      <line x1="75" y1="60" x2="85" y2="60" />
+      
+      <!-- Bottom pins -->
+      <line x1="-60" y1="75" x2="-60" y2="85" />
+      <line x1="-40" y1="75" x2="-40" y2="85" />
+      <line x1="-20" y1="75" x2="-20" y2="85" />
+      <line x1="0" y1="75" x2="0" y2="85" />
+      <line x1="20" y1="75" x2="20" y2="85" />
+      <line x1="40" y1="75" x2="40" y2="85" />
+      <line x1="60" y1="75" x2="60" y2="85" />
+      
+      <!-- Left pins -->
+      <line x1="-75" y1="-60" x2="-85" y2="-60" />
+      <line x1="-75" y1="-40" x2="-85" y2="-40" />
+      <line x1="-75" y1="-20" x2="-85" y2="-20" />
+      <line x1="-75" y1="0" x2="-85" y2="0" />
+      <line x1="-75" y1="20" x2="-85" y2="20" />
+      <line x1="-75" y1="40" x2="-85" y2="40" />
+      <line x1="-75" y1="60" x2="-85" y2="60" />
+    </g>
+    
+    <!-- Subtle animation for the hovering effect -->
+    <animateTransform attributeName="transform"
+                      type="translate"
+                      values="400,300; 400,295; 400,300"
+                      dur="4s"
+                      repeatCount="indefinite" />
+  </g>
+  
+  <!-- PCB text markings -->
+  <g fill="#1a87a9" font-family="monospace" font-size="8">
+    <text x="170" y="190">R1</text>
+    <text x="170" y="390">R2</text>
+    <text x="620" y="190">C1</text>
+    <text x="620" y="390">C2</text>
+    <text x="380" y="410">AI-PROC-V2</text>
+    <text x="375" y="425" font-size="6">FC-2025</text>
+  </g>
+</svg>
