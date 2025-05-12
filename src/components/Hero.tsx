@@ -76,7 +76,7 @@ const Hero = () => {
                   <img
                     // src="/public/ChatGPT_castle_blue_theme_latest.png"
                     src="/public/animated_chip.svg"
-                    alt="ChatGPT Logo"
+                    alt="Chip Logo"
                     style={{
                       width: "600px",
                       height: "600px",
