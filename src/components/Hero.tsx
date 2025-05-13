@@ -75,8 +75,8 @@ const Hero = () => {
                 <div className="flex justify-center mb-1">
                   <img
                     // src="/public/ChatGPT_castle_blue_theme_latest.png"
-                    src="/public/animated_chip.svg"
-                    alt="Chip Logo"
+                    src="/animated_chip.svg"
+                    alt="ChatGPT Logo"
                     style={{
                       width: "600px",
                       height: "600px",
