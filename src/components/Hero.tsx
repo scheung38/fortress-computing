@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { getYearsInBusiness } from "../common_functions";
+import ChipVisualization from "./ChipVisualization";
 
 const Hero = () => {
   return (
@@ -73,17 +74,8 @@ const Hero = () => {
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0icmdiYSgxMiwgNzQsIDExMCwgMC4yKSIvPjwvc3ZnPg==')] opacity-10"></div>
               <div className="relative z-10 p-8 text-center">
                 <div className="flex justify-center mb-1">
-                  <img
-                    // src="/public/ChatGPT_castle_blue_theme_latest.png"
-                    src="/animated_chip.svg"
-                    alt="ChatGPT Logo"
-                    style={{
-                      width: "600px",
-                      height: "600px",
-                      marginBottom: "-68px", // for example
-                    }}
-                    className="object-contain"
-                  />
+                  {/* ChipVisualization replaces the SVG image */}
+                  <ChipVisualization style={{ width: "600px", height: "600px", marginBottom: "-68px" }} />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">
                   Accelerate Your Digital Transformation

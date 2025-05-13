@@ -17,6 +17,7 @@ const Index = () => {
       <Team />
       <Contact />
       <Footer />
+       
     </div>
   );
 };
