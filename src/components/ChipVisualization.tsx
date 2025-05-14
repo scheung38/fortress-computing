@@ -55,6 +55,30 @@ const ChipVisualization: React.FC<ChipVisualizationProps> = (props) => {
     config: { duration: 12600 }, // Slow down by 20%
   });
 
+  // Animated color for inner square (deep blue to bright blue in a random loop)
+  const colorSpring = useSpring({
+    from: { stroke: '#0a192f', fill: '#0a192f' },
+    to: async (next) => {
+      while (1) {
+        // Pick a random color between deep blue and bright blue
+        const t = Math.random();
+        // Interpolate between #0a192f and #33C3F0
+        const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+        const c1 = { r: 0x0a, g: 0x19, b: 0x2f };
+        const c2 = { r: 0x33, g: 0xc3, b: 0xf0 };
+        const r = lerp(c1.r, c2.r, t);
+        const g = lerp(c1.g, c2.g, t);
+        const b = lerp(c1.b, c2.b, t);
+        const color = `rgb(${r},${g},${b})`;
+        await next({ stroke: color, fill: color });
+        // Wait a random duration before next color
+        await new Promise(res => setTimeout(res, 700 + Math.random() * 1200));
+      }
+    },
+    config: { duration: 1200 },
+    loop: true,
+  });
+
   return (
     <div
       className="relative w-full h-full flex items-center justify-center"
@@ -177,15 +201,14 @@ const ChipVisualization: React.FC<ChipVisualizationProps> = (props) => {
             stroke="#33C3F0"
             strokeWidth="1"
           />
-          <rect
-            x="100"
-            y="100"
-            width="100"
-            height="100"
-            fill="#0FA0CE"
-            fillOpacity="0.2"
-            stroke="#33C3F0"
-            strokeWidth="2"
+          <animated.rect
+            x={100}
+            y={100}
+            width={100}
+            height={100}
+            fill={colorSpring.fill}
+            stroke={colorSpring.stroke}
+            strokeWidth={2}
             className="animate-blink"
           />
 
